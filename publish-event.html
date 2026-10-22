@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A192F">
+  <title>Fezdev Events | Publish an Event</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fezdev.css">
+  <script src="fezdev.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">FEZDEV <span>EVENTS &amp; MEETINGS</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span>MENU</span><span class="menu-caret" aria-hidden="true">▾</span></button>
+      <nav id="site-menu" class="site-menu" aria-label="Primary">
+        <a href="index.html#events-section" aria-current="page">Events</a>
+        <a href="meeting.html">Meetings</a>
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-tag">PUBLISH EVENT</p>
+      <h1>Event publisher</h1>
+      <p class="lead">Put a conference, hackathon, workshop or meetup in the public listing. Events are for audiences. For a private session with named participants, <a href="host-meeting.html" style="color:var(--blue-tint)">schedule a meeting</a> instead.</p>
+    </div>
+  </section>
+
+  <main id="main" class="container page-main">
+    <form id="publishEventForm" class="form-card" novalidate>
+      <div class="field">
+        <label for="evName">Event name *</label>
+        <input id="evName" name="name" required minlength="3" maxlength="100" autocomplete="off" placeholder="AI Security Summit 2026" aria-describedby="evName-error" data-required-msg="Give the event a name.">
+        <p class="field-error" id="evName-error"></p>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="evCategory">Event type</label>
+          <select id="evCategory" name="category">
+            <option>Conference</option>
+            <option>Hackathon</option>
+            <option>Workshop</option>
+            <option>Webinar</option>
+            <option>Meetup</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="evTrack">Primary track</label>
+          <select id="evTrack" name="track">
+            <option>Frontend &amp; UI</option>
+            <option>Performance &amp; Edge</option>
+            <option>RegTech &amp; Compliance</option>
+            <option>Tooling &amp; DevOps</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset class="fieldset">
+        <legend class="field-label">Format *</legend>
+        <div class="segmented">
+          <label><input type="radio" name="format" value="In person" checked><span>In person</span></label>
+          <label><input type="radio" name="format" value="Online"><span>Online</span></label>
+          <label><input type="radio" name="format" value="Hybrid"><span>Hybrid</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="evTz">Event time zone *</label>
+        <select id="evTz" name="timezone" required aria-describedby="evTzHint"></select>
+        <p class="field-hint" id="evTzHint"></p>
+      </div>
+
+      <div class="form-row">
+        <div class="field" role="group" aria-labelledby="evStartLabel">
+          <span class="field-label" id="evStartLabel">Starts *</span>
+          <div class="datetime-group">
+            <input type="date" id="evStartDate" name="startDate" required aria-label="Start date" aria-describedby="evStart-error">
+            <input type="time" id="evStartTime" name="startTime" required aria-label="Start time" aria-describedby="evStart-error">
+          </div>
+          <p class="field-error" id="evStart-error"></p>
+        </div>
+        <div class="field" role="group" aria-labelledby="evEndLabel">
+          <span class="field-label" id="evEndLabel">Ends *</span>
+          <div class="datetime-group">
+            <input type="date" id="evEndDate" name="endDate" required aria-label="End date" aria-describedby="evEnd-error">
+            <input type="time" id="evEndTime" name="endTime" required aria-label="End time" aria-describedby="evEnd-error">
+          </div>
+          <p class="field-error" id="evEnd-error"></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="evVenue" id="evVenueLabel">Venue and address *</label>
+        <input id="evVenue" name="venue" required autocomplete="off" placeholder="Landmark Centre, Victoria Island, Lagos" aria-describedby="evVenue-error" data-required-msg="Add where the event takes place.">
+        <p class="field-error" id="evVenue-error"></p>
+      </div>
+
+      <div class="field">
+        <label for="evHost">Host organization</label>
+        <input id="evHost" name="host" value="Fezdev Events" maxlength="80" autocomplete="organization">
+      </div>
+
+      <div class="field">
+        <label for="evDescription">Public description</label>
+        <textarea id="evDescription" name="description" maxlength="500" placeholder="What will attendees learn, build or see?" aria-describedby="evDescription-error descCount"></textarea>
+        <span class="counter" id="descCount" aria-hidden="true">0/500</span>
+        <p class="field-error" id="evDescription-error"></p>
+      </div>
+
+      <label class="checkbox-label"><input type="checkbox" id="evSpeakers" name="speakers" checked> Publish the speakers and agenda directory with the event</label>
+
+      <div class="button-row">
+        <a class="button" href="index.html">Cancel</a>
+        <button class="button button-primary" type="submit">Publish event →</button>
+      </div>
+    </form>
+
+    <section class="card events-card" aria-labelledby="mine-title">
+      <h2 id="mine-title">Your published events</h2>
+      <p class="field-hint">Unpublish an event to remove it from the homepage listing.</p>
+      <ul class="item-list" data-list="my-events"></ul>
+    </section>
+
+    <div class="notice">Published events are stored in this browser and shown on this site's homepage. Sharing them with other visitors requires a backend and database.</div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">FEZDEV</div>
+      </div>
+      <div>
+        <h3>Navigate</h3><a href="index.html">Home</a><a href="about.html">About</a><a href="help.html">Help</a>
+      </div>
+      <div>
+        <h3>Fezdev Meetings</h3><a href="meeting.html">Meeting hub</a><a href="host-meeting.html">Schedule a meeting</a>
+      </div>
+      <div>
+        <h3>Fezdev Events</h3><a href="index.html#events-section">Featured events</a><a href="publish-event.html">Publish an event</a><a href="devhorizon26/index.html">DevHorizon26</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">FEZDEV · Fezdev Events · Fezdev Meetings · © 2026</div>
+  </footer>
+</body>
+
+</html>

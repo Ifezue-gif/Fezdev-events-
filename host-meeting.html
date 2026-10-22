@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A192F">
+  <title>Fezdev Meetings | Schedule a Meeting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fezdev.css">
+  <script src="fezdev.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">FEZDEV <span>EVENTS &amp; MEETINGS</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span>MENU</span><span class="menu-caret" aria-hidden="true">▾</span></button>
+      <nav id="site-menu" class="site-menu" aria-label="Primary">
+        <a href="index.html#events-section">Events</a>
+        <a href="meeting.html" aria-current="page">Meetings</a>
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-tag">SCHEDULE MEETING</p>
+      <h1>Schedule a meeting</h1>
+      <p class="lead">Pick a duration, choose an open slot in your time zone, and invite participants. A calendar file downloads when you finish.</p>
+    </div>
+  </section>
+
+  <main id="main" class="container page-main">
+    <div class="booking-layout">
+      <form id="hostMeetingForm" class="form-card" novalidate>
+        <div class="field">
+          <label for="meetingTitle">Meeting title *</label>
+          <input id="meetingTitle" name="title" required minlength="3" maxlength="120" autocomplete="off" placeholder="Quarterly engineering sync" aria-describedby="meetingTitle-error" data-required-msg="Give the meeting a title.">
+          <p class="field-error" id="meetingTitle-error"></p>
+        </div>
+
+        <fieldset class="fieldset">
+          <legend class="field-label">Duration *</legend>
+          <div class="segmented">
+            <label><input type="radio" name="duration" value="15"><span>15 min</span></label>
+            <label><input type="radio" name="duration" value="30" checked><span>30 min</span></label>
+            <label><input type="radio" name="duration" value="60"><span>60 min</span></label>
+          </div>
+        </fieldset>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="meetingTz">Your time zone *</label>
+            <select id="meetingTz" name="timezone" required aria-describedby="tzHint"></select>
+            <p class="field-hint" id="tzHint"></p>
+          </div>
+          <div class="field">
+            <label for="meetingDate">Date *</label>
+            <input type="date" id="meetingDate" name="date" required aria-describedby="meetingDate-error" data-required-msg="Pick a date to see open times.">
+            <p class="field-error" id="meetingDate-error"></p>
+          </div>
+        </div>
+
+        <fieldset class="fieldset" aria-describedby="slotHelp slot-error">
+          <legend class="field-label">Available times *</legend>
+          <div class="slot-toolbar">
+            <p class="field-hint" id="slotHelp" aria-live="polite"></p>
+            <button type="button" class="button button-small" id="nextOpen">Find next opening</button>
+          </div>
+          <div class="slot-grid" id="slotGrid"></div>
+          <p class="field-error" id="slot-error" role="alert"></p>
+        </fieldset>
+
+        <div class="field">
+          <label for="meetingPlatform">Conference platform *</label>
+          <select id="meetingPlatform" name="platform" required>
+            <option>Google Meet</option>
+            <option>Zoom</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="meetingEmails">Participant email addresses *</label>
+          <textarea id="meetingEmails" name="emails" required rows="3" placeholder="alex@company.com, team@company.com" aria-describedby="meetingEmails-hint meetingEmails-error" data-required-msg="Add at least one participant email."></textarea>
+          <p class="field-hint" id="meetingEmails-hint">Separate addresses with commas, spaces or new lines.</p>
+          <p class="field-error" id="meetingEmails-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="meetingNotes">Agenda or notes</label>
+          <textarea id="meetingNotes" name="notes" placeholder="Discussion points..."></textarea>
+        </div>
+
+        <div class="button-row">
+          <a class="button" href="meeting.html">Back</a>
+          <button class="button button-primary" type="submit">Schedule meeting →</button>
+        </div>
+        <p id="formMessage" class="form-message" aria-live="polite"></p>
+      </form>
+
+      <aside class="side-stack" aria-label="Availability and upcoming meetings">
+        <details class="card" open>
+          <summary>Host availability</summary>
+          <form id="availabilityForm" novalidate>
+            <fieldset class="fieldset">
+              <legend class="field-label">Working days</legend>
+              <div class="segmented segmented--days">
+                <label><input type="checkbox" name="days" value="1"><span>Mon</span></label>
+                <label><input type="checkbox" name="days" value="2"><span>Tue</span></label>
+                <label><input type="checkbox" name="days" value="3"><span>Wed</span></label>
+                <label><input type="checkbox" name="days" value="4"><span>Thu</span></label>
+                <label><input type="checkbox" name="days" value="5"><span>Fri</span></label>
+                <label><input type="checkbox" name="days" value="6"><span>Sat</span></label>
+                <label><input type="checkbox" name="days" value="0"><span>Sun</span></label>
+              </div>
+              <p class="field-error" id="availDays-error" role="alert"></p>
+            </fieldset>
+            <div class="form-row">
+              <div class="field"><label for="availStart">From</label><select id="availStart"></select></div>
+              <div class="field"><label for="availEnd">Until</label><select id="availEnd"></select><p class="field-error" id="availEnd-error"></p></div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="availBuffer">Buffer between meetings</label>
+                <select id="availBuffer">
+                  <option value="0">None</option>
+                  <option value="5">5 minutes</option>
+                  <option value="10">10 minutes</option>
+                  <option value="15">15 minutes</option>
+                  <option value="30">30 minutes</option>
+                </select>
+              </div>
+              <div class="field"><label for="availTz">Availability time zone</label><select id="availTz"></select></div>
+            </div>
+            <div class="button-row">
+              <button type="submit" class="button button-primary button-small">Save availability</button>
+              <button type="button" class="button button-small" id="availReset">Reset</button>
+            </div>
+          </form>
+        </details>
+
+        <section class="card" aria-labelledby="upcoming-title">
+          <h2 id="upcoming-title">Upcoming meetings</h2>
+          <ul class="item-list" data-list="meetings"></ul>
+        </section>
+      </aside>
+    </div>
+
+    <!-- This prototype saves meetings in your browser and exports a calendar file (.ics). Connect it to a secure backend to send email invitations and create valid meeting links automatically. -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">FEZDEV</div>
+      </div>
+      <div>
+        <h3>Navigate</h3><a href="index.html">Home</a><a href="about.html">About</a><a href="help.html">Help</a>
+      </div>
+      <div>
+        <h3>Fezdev Meetings</h3><a href="meeting.html">Meeting hub</a><a href="host-meeting.html">Schedule a meeting</a>
+      </div>
+      <div>
+        <h3>Fezdev Events</h3><a href="index.html#events-section">Featured events</a><a href="publish-event.html">Publish an event</a><a href="devhorizon26/index.html">DevHorizon26</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">FEZDEV · Fezdev Events · Fezdev Meetings · © 2026</div>
+  </footer>
+</body>
+
+</html>

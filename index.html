@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A192F">
+  <meta name="description" content="FEZDEV brings together Fezdev Meetings and Fezdev Events to help organizations schedule private sessions and publish public events.">
+  <title>FEZDEV | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fezdev.css">
+  <script src="fezdev.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">FEZDEV <span>EVENTS &amp; MEETINGS</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span>MENU</span><span class="menu-caret" aria-hidden="true">▾</span></button>
+      <nav id="site-menu" class="site-menu" aria-label="Primary">
+        <a href="#events-section">Events</a>
+        <a href="meeting.html">Meetings</a>
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="section-tag">FEZDEV EVENTS &amp; MEETINGS</p>
+        <h1>Schedule meetings. Publish events.<span class="cursor" aria-hidden="true"> </span></h1>
+        <p class="lead">One workspace for tech organizations. Book private meetings with real time slots and calendar invites, or publish conferences, hackathons and workshops for everyone to find.</p>
+        <div class="button-row">
+          <a class="button button-primary" href="host-meeting.html">Schedule a meeting →</a>
+          <a class="button" href="publish-event.html">Publish an event</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="events-section" class="container section" aria-labelledby="events-title">
+      <p class="section-tag">PUBLISHED EVENTS</p>
+      <h2 class="section-title" id="events-title">Featured events</h2>
+      <p class="section-sub">Public listings that anyone can discover. Publish yours in a couple of minutes.</p>
+      <div class="event-grid">
+        <article class="event-card devhorizon-card">
+          <span class="badge badge-primary">Live conference</span>
+          <h3>DevHorizon26</h3>
+          <p class="event-meta">NOV 15–17, 2026 DEVELOPER CONFERENCE</p>
+          <p>Talks, workshops, panels, and practical sessions covering frontend, performance, accessibility, tooling, and modern engineering.</p>
+          <a class="button button-primary" href="devhorizon26/index.html">Access DevHorizon26 hub →</a>
+        </article>
+
+        <article class="event-card pora-card">
+          <span class="badge badge-blue">RegTech hackathon</span>
+          <h3>PORA Hackathon</h3>
+          <p class="event-meta">HOSTED BY PORA &amp; REGTECH DEC 01–03, 2026</p>
+          <p>A featured 48-hour challenge focused on regulatory technology, compliance tools, secure systems, and enterprise innovation.</p>
+          <a class="button button-primary" href="https://porahackathon.regtech365.com/" target=" blank" rel="noopener noreferrer">Visit PORA Hackathon ↗</a>
+        </article>
+      </div>
+
+      <div id="community-events" class="community">
+        <h3 class="section-title" style="font-size:1.35rem">Newly published</h3>
+        <p class="section-sub">Events published from this browser.</p>
+        <div class="event-grid" data-list="community-events" data-empty-href="publish-event.html" data-empty-label="Publish an event"></div>
+      </div>
+
+      <div class="center-action">
+        <a class="publish-link" href="publish-event.html">+ PUBLISH AN EVENT</a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="meetings-title">
+      <div class="container">
+        <div class="meeting-preview">
+          <p class="section-tag">SCHEDULE MEETINGS</p>
+          <h2 class="section-title" id="meetings-title">Quick organization syncs</h2>
+          <p class="section-sub">Private, time-slot bookings. Choose whether you are scheduling a meeting or checking for an invitation.</p>
+          <div class="choice-grid">
+            <a class="choice-card" href="host-meeting.html">
+              <span class="choice-label">HOST MODE</span>
+              <h3>I am a host</h3>
+              <p>Pick a time slot, choose Google Meet or Zoom, and send participants a calendar invite.</p>
+              <span class="button button-primary">Schedule a meeting →</span>
+            </a>
+            <a class="choice-card" href="meeting.html#participant">
+              <span class="choice-label">PARTICIPANT MODE</span>
+              <h3>I am a participant</h3>
+              <p>Choose your email provider and check your inbox for meeting invitations.</p>
+              <span class="button">Check mail →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">FEZDEV</div>
+      </div>
+      <div>
+        <h3>Navigate</h3><a href="index.html">Home</a><a href="about.html">About</a><a href="help.html">Help</a>
+      </div>
+      <div>
+        <h3>Fezdev Meetings</h3><a href="meeting.html">Meeting hub</a><a href="host-meeting.html">Schedule a meeting</a>
+      </div>
+      <div>
+        <h3>Fezdev Events</h3><a href="#events-section">Featured events</a><a href="publish-event.html">Publish an event</a><a href="devhorizon26/index.html">DevHorizon26</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">FEZDEV · Fezdev Events · Fezdev Meetings · © 2026</div>
+  </footer>
+</body>
+
+</html>
